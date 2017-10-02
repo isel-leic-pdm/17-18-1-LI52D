@@ -17,7 +17,6 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        counter.text = "";
         increment.setOnClickListener(getOnClickListener("increment", 1));
         decrement.setOnClickListener(getOnClickListener("decrement", -1));
     }
@@ -30,7 +29,7 @@ class MainActivity : Activity() {
 private fun getOnClickListener(message: String, delta: Int): View.OnClickListener {
     return View.OnClickListener {
         Log.i(TAG, "$message click called")
-        currentValue += delta*2;
+        currentValue += delta;
     }
 
 }
