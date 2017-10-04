@@ -4,31 +4,65 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Counter: " />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/counter"
-        android:layout_width="@android:dimen/app_icon_size"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:inputType="number"
-        android:text="0" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Counter: " />
 
-    <Button
-        android:id="@+id/increment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+" />
+        <TextView
+            android:id="@+id/counter"
+            android:layout_width="@android:dimen/app_icon_size"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="0" />
 
-    <Button
-        android:id="@+id/decrement"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="-" />
+        <Button
+            android:id="@+id/increment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+" />
+
+        <Button
+            android:id="@+id/decrement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="-" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Max Value: " />
+
+        <EditText
+            android:id="@+id/max"
+            android:layout_width="@android:dimen/app_icon_size"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="0" />
+    </LinearLayout>
+
 
 </LinearLayout>
