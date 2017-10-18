@@ -16,7 +16,7 @@ class MainActivity : Activity() {
 
         searchBtn.setOnClickListener {
             Log.i(TAG, "click pressed on internal button")
-            SoccerAppOperations.getLeagues("") {
+            SoccerAppOperations.getLeagues(leagueEdit.text.toString()) {
                 result.text = it.toString()
             }
         }

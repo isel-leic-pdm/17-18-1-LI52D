@@ -12,7 +12,7 @@ import pt.isel.pdm.li52d.a1718i.soccerapp.utils.JsonConverter
 
 
 object SoccerFsRepository : SoccerRepository {
-    override fun searchLeagues(searchStr: String, cb: (LeagueDto) -> Unit) : Unit {
+    override fun searchLeagues(searchStr: String, cb: (List<LeagueDto>) -> Unit) : Unit {
         TODO("Not implemented")
     }
 
