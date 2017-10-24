@@ -2,6 +2,7 @@ package pt.isel.pdm.li52d.a1718i.soccerapp
 
 import android.app.Application
 import android.util.Log
+import pt.isel.pdm.li52d.a1718i.soccerapp.data.ImagesApiRepository
 import pt.isel.pdm.li52d.a1718i.soccerapp.data.SoccerApiRepository
 import pt.isel.pdm.li52d.a1718i.soccerapp.domain.operations.SoccerAppOperations
 import pt.isel.pdm.li52d.a1718i.soccerapp.utils.HttpRequests
@@ -17,6 +18,7 @@ class MyApplication: Application() {
 
         HttpRequests.init(applicationContext)
 
-        SoccerAppOperations.Repository = SoccerApiRepository;
+        SoccerAppOperations.SoccerRepository = SoccerApiRepository;
+        SoccerAppOperations.ImagesRepository = ImagesApiRepository;
     }
 }

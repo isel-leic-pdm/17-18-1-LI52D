@@ -17,13 +17,9 @@ object SoccerApiRepository : SoccerRepository {
         HttpRequests.get(
                 "$BASE_URI/soccerseasons",
                 {str -> cb(JsonConverter.convert<List<LeagueDto>>(str).filter { it.caption.contains(searchStr, true) })})
+                //{str -> cb(JsonConverter.convertInJava(str, List::class as List<LeagueDto>).filter { it.caption.contains(searchStr, true) })})
 
     }
-
-//    private inline fun <reified T: Any> convertStringToDtoAndFilter(str: String, cb: (T) -> Unit) {
-//        val res: T = JsonConverter.convert<T>(str)
-//        cb(res)
-//    }
 }
 
 
