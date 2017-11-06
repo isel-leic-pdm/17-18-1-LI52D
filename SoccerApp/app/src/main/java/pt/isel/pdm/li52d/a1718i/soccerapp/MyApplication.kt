@@ -1,6 +1,7 @@
 package pt.isel.pdm.li52d.a1718i.soccerapp
 
 import android.app.Application
+import android.os.Handler
 import android.util.Log
 import pt.isel.pdm.li52d.a1718i.soccerapp.data.ImagesApiRepository
 import pt.isel.pdm.li52d.a1718i.soccerapp.data.SoccerApiRepository
@@ -21,4 +22,7 @@ class MyApplication: Application() {
         SoccerAppOperations.SoccerRepository = SoccerApiRepository;
         SoccerAppOperations.ImagesRepository = ImagesApiRepository;
     }
+
+
+    var Handler: Handler? = null;
 }

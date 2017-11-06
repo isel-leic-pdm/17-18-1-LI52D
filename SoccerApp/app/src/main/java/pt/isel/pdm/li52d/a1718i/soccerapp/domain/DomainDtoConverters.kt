@@ -9,4 +9,4 @@ import pt.isel.pdm.li52d.a1718i.soccerapp.domain.entities.League
  */
 
 
-fun LeagueDto.toDomain(imageUrl: String, image: Bitmap?) : League = League(this.id, this.caption, this.league, this.currentMatchday, this.numberOfMatchdays, imageUrl, image)
+fun LeagueDto.toDomain(imageUrl: String?, image: Bitmap?) : League = League(this.id, this.caption, this.league, this.currentMatchday, this.numberOfMatchdays, imageUrl, image)

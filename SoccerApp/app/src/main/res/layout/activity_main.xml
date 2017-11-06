@@ -38,6 +38,17 @@
         app:layout_constraintTop_toBottomOf="@+id/leagueEdit"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent" />
+    <Button
+        android:id="@+id/startService"
+        android:layout_width="206dp"
+        android:layout_height="53dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="31dp"
+        android:text="StartResultsService"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchBtn"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/result"

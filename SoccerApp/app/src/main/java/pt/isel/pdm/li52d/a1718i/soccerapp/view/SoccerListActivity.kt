@@ -13,19 +13,30 @@ import kotlinx.android.synthetic.main.activity_main.*
 import pt.isel.pdm.li52d.a1718i.soccerapp.R
 import pt.isel.pdm.li52d.a1718i.soccerapp.domain.operations.SoccerAppOperations
 import pt.isel.pdm.li52d.a1718i.soccerapp.view.adapter.SoccerListAdapter
+import android.view.Gravity
+import pt.isel.pdm.li52d.a1718i.soccerapp.domain.entities.League
+
 
 class SoccerListActivity : ListActivity() {
     val TAG: String = SoccerListActivity::class.simpleName!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //setContentView(R.layout.soccer_list)
 
         // Show a PrograssBar while data loads
         val root = findViewById<View>(android.R.id.content) as ViewGroup
 
-        listView.emptyView = layoutInflater.inflate(R.layout.empty_list, root, true)
 
-        //root.addView(listView.emptyView)
+//        val progressBar = ProgressBar(this)
+//        progressBar.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+//                ViewGroup.LayoutParams.WRAP_CONTENT)
+//        progressBar.isIndeterminate = true
+//        listView.emptyView = progressBar
+
+        listView.emptyView = layoutInflater.inflate(R.layout.empty_list, null, false)
+        // Must add the progress bar to the root of the layout
+        root.addView(listView.emptyView)
 
         SoccerAppOperations.getLeagues(intent.extras[EXTRA_TEXT] as String) {
             listAdapter = SoccerListAdapter(it,
@@ -40,7 +51,7 @@ class SoccerListActivity : ListActivity() {
         Log.i(TAG, "Clicked optin for viwe bound to object ${v.tag}")
 
         var intent = Intent(this, LeagueDetailsActivity::class.java)
-        //intent.putExtra()
+        intent.putExtra(League::class.simpleName, listAdapter.getItem(position) as League)
         startActivity(intent)
     }
 }

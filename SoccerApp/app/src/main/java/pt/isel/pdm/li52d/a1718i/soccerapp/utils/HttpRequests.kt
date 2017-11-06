@@ -26,39 +26,41 @@ object HttpRequests {
         queue = Volley.newRequestQueue(context)
     }
 
-    fun get(url: String, responseCb: (String) -> Unit): Unit {
+
+    fun get(url: String, responseCb: (String?, String?) -> Unit): Unit {
         Log.i(TAG, "Http Request to text Url ${url}");
         // Request a string response from the provided URL.
         val stringRequest = StringRequest(Request.Method.GET, url,
                 Response.Listener<String> { response: String -> processResponse(response, responseCb) },
-                Response.ErrorListener { requestError(it) })
+                Response.ErrorListener { requestError(it, responseCb) })
         // Add the request to the RequestQueue.
         queue?.add(stringRequest)
 
     }
 
-    fun getImage(url: String, width: Int, height: Int, responseCb: (Bitmap) -> Unit): Unit {
+    fun getImage(url: String, width: Int, height: Int, responseCb: (String?, Bitmap?) -> Unit): Unit {
         // Request a an Image response from the provided URL.
         Log.i(TAG, "Http Request to image Url ${url}");
         val imageRequest = ImageRequest(
                 url,
-                Response.Listener<Bitmap> { bm -> responseCb(bm) },
+                Response.Listener<Bitmap> { bm -> processResponse(bm, responseCb) },
                 width,
                 height,
                 ImageView.ScaleType.CENTER_INSIDE,
                 Bitmap.Config.ALPHA_8,
-                Response.ErrorListener { requestError(it) })
+                Response.ErrorListener { requestError(it, responseCb) })
         queue?.add(imageRequest)
 
     }
 
-    private fun processResponse(response: String, responseCb: (String) -> Unit) {
+    private fun <T> processResponse(response: T, responseCb: (String?, T?) -> Unit) {
         Log.i(TAG, "Response is: $response")
-        responseCb(response)
+        responseCb(null, response)
     }
 
-    private fun requestError(error: VolleyError) {
+    private fun<T> requestError(error: VolleyError, responseCb: (String?, T?) -> Unit) {
         Log.e(TAG, "The Http response could not be obtained because of the following error: $error")
+        responseCb(error.toString(), null)
     }
 }
 

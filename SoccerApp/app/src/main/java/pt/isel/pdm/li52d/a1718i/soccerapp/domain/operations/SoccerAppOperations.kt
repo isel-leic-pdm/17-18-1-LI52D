@@ -24,7 +24,7 @@ object SoccerAppOperations {
 
         fun imageItemCallback(leagueDto: LeagueDto, size: Int): (List<ImageItem>) -> Unit {
             return { imageItems: List<ImageItem> ->
-                leagues.add(leagueDto.toDomain(imageItems[0].thumbnail, null))
+                leagues.add(leagueDto.toDomain(if(imageItems.size > 0) imageItems[0].thumbnail else null, null))
                 if(size == leagues.size) {
                     leaguesCb(leagues)
                 }

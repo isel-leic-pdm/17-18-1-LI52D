@@ -1,25 +1,37 @@
 package pt.isel.pdm.li52d.a1718i.soccerapp.view
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.Intent
+import android.content.Intent.EXTRA_TEXT
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 import pt.isel.pdm.li52d.a1718i.soccerapp.R
-import pt.isel.pdm.li52d.a1718i.soccerapp.domain.operations.SoccerAppOperations
-import android.content.DialogInterface
-import android.app.AlertDialog
-import android.content.Intent
-import android.content.Intent.EXTRA_EMAIL
-import android.content.Intent.EXTRA_TEXT
-import pt.isel.pdm.li52d.a1718i.soccerapp.data.ImagesApiRepository
+import pt.isel.pdm.li52d.a1718i.soccerapp.service.ResultsService
+import pt.isel.pdm.li52d.a1718i.soccerapp.utils.MyApplication
+import java.util.*
 
 
 class MainActivity : Activity() {
     val TAG: String = MainActivity::class.simpleName!!;
 
+    var handler: Handler? = null;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.i(TAG, "Current device language ${Locale.getDefault().language}")
+        Log.i(TAG, "Activity pid ${android.os.Process.myPid()}")
+
+        MyApplication.Handler = object : Handler() {
+            override fun handleMessage(m: Message) {
+                if(m.data["service_status"] != null) {
+                    startService.text = "Service started"
+                }
+            }
+        }
 
 
         searchBtn.setOnClickListener {
@@ -35,6 +47,11 @@ class MainActivity : Activity() {
 
             startActivity(intent)
 
+        }
+
+        startService.setOnClickListener {
+            startService.text = "Service Starting..."
+            this.startService(Intent(this, ResultsService::class.java))
         }
     }
 

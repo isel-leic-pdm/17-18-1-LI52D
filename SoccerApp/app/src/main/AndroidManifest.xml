@@ -25,6 +25,8 @@
         <activity
             android:name=".view.LeagueDetailsActivity"
             android:label="@string/title_activity_soccer_league"></activity>
+
+        <service android:name=".service.ResultsService"/>
     </application>
 
 </manifest>

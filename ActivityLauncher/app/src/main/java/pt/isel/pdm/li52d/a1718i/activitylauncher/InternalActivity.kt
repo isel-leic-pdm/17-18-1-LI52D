@@ -15,10 +15,6 @@ class InternalActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_internal)
 
-        //val strings: Array<String> = arrayOf("one", "two", "three")
-//        val adapter: ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, strings)
-        //val adapter: ArrayAdapter<Team> = ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, SoccerRepository.getTeams())
-
         val adapter: TeamAdapter = TeamAdapter(SoccerRepository.getTeams(), layoutInflater)
         listView.adapter = adapter
     }

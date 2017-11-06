@@ -19,7 +19,7 @@ import pt.isel.pdm.li52d.a1718i.soccerapp.utils.HttpRequests
 const val IMAGE_WIDTH = 60
 const val IMAGE_HEIGHT = 60
 
-class  SoccerListAdapter<T>(val list: List<T>, val textExtractor: (T) -> String, val urlExtractor: (T)-> String, val imageExtractor: (T) -> Bitmap?, val layoutInflater: LayoutInflater) : BaseAdapter() {
+class  SoccerListAdapter<T>(val list: List<T>, val textExtractor: (T) -> String, val urlExtractor: (T)-> String?, val imageExtractor: (T) -> Bitmap?, val layoutInflater: LayoutInflater) : BaseAdapter() {
     val TAG: String = SoccerListAdapter::class.simpleName!!;
 
     override fun getItemId(idx: Int): Long = idx.toLong()
@@ -42,26 +42,30 @@ class  SoccerListAdapter<T>(val list: List<T>, val textExtractor: (T) -> String,
 
 
         val item: T = list[position];
-        retView.tag = item
-
-        val image = convertView?.findViewById<ImageView>(R.id.image)
-
-
-        val tag = retView.tag;
-        HttpRequests.getImage(urlExtractor(item), IMAGE_WIDTH, IMAGE_HEIGHT,
-                {
-                    if(tag == retView.tag)
-                        image.setImageBitmap(it)
-
-                })
-        image.setImageResource(R.mipmap.ic_launcher)
-
         val caption = convertView?.findViewById<TextView>(R.id.caption)
         caption?.text = textExtractor(item)
 
-
-
+        setImage(item, retView.findViewById<ImageView>(R.id.image))
 
         return retView!!
+    }
+
+    private fun setImage(item: T, image: ImageView) {
+        image.tag = item;
+        val tag = image.tag;
+
+        val url = urlExtractor(item);
+        if (url != null) {
+            HttpRequests.getImage(url, IMAGE_WIDTH, IMAGE_HEIGHT,
+                    { err, bitmap ->
+                        if (err == null) {
+                            Log.e(TAG, "Could not obtain image");
+                        }
+                        if (tag == image.tag)
+                            image.setImageBitmap(bitmap!!)
+
+                    })
+            image.setImageResource(R.mipmap.ic_launcher)
+        }
     }
 }
