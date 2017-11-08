@@ -23,6 +23,6 @@ class MyApplication: Application() {
         SoccerAppOperations.SoccerRepository = SoccerApiRepository;
         SoccerAppOperations.ImagesRepository = ImagesApiRepository;
     }
-    
+
     val Handler: MessageHandler = MessageHandler();
 }

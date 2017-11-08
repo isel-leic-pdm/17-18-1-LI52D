@@ -47,6 +47,11 @@ class MainActivity : Activity() {
             startService.text = "Service Starting..."
             this.startService(Intent(this, ResultsService::class.java))
         }
+
+
+        // Get optional search string from intent
+        val search: String =  intent.getStringExtra("search") ?:  "";
+        leagueEdit.setText(search)
     }
 
     private fun showAlertDialog(messageId: Int) {
