@@ -25,22 +25,21 @@ class ResultsService : Service() {
 
 
         var t:Thread = Thread {
+            MyApplication.Handler.add("service_status", "ok")
             Log.i(TAG, "ResultsService thread with pid ${android.os.Process.myPid()} and in thread ${Thread.currentThread().id} ")
-            val msg = Message.obtain();
-            val bundle = Bundle();
-            bundle.putString("service_status", "ok")
-            msg.data = bundle
 
-            Thread.sleep(2000)
-            MyApplication.Handler?.sendMessage(msg)
+            while (true) {
+                Log.i(TAG, "ResultsService thread is going to sleep...")
+                Thread.sleep(4000)
+            }
         }
-
+        t.name = "SLB"
         t.start();
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.i(TAG, "Dummy service onDestroy")
+        Log.i(TAG, "ResultsService service onDestroy")
     }
 
 }
