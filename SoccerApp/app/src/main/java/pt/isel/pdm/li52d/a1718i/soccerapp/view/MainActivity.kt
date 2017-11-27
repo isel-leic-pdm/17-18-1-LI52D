@@ -65,6 +65,7 @@ class MainActivity : Activity() {
     override fun onStart() {
         super.onStart()
         Log.i(TAG, "onStart")
+        scheduleJob()
     }
 
     private fun showAlertDialog(messageId: Int) {
@@ -86,8 +87,20 @@ class MainActivity : Activity() {
         Log.i(TAG, "onOptionsItemSelected")
         when(item?.itemId) {
            R.id.menu_notification  -> this.startActivity(Intent(this, NotificationActivity::class.java))
+            R.id.shared_preferences  -> this.startActivity(Intent(this, SharedPreferencesActivity::class.java))
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    var jobId = 0;
+    private fun scheduleJob() {
+        val jobScheduler: JobScheduler = this.getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
+
+        val schedule = jobScheduler.schedule(JobInfo.Builder(jobId++,
+                ComponentName(this, ResultsJobService::class.java))
+                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
+                //.setPeriodic(2000)
+                .build())
     }
 }

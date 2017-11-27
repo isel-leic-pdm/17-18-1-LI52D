@@ -11,7 +11,6 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_notifications.*
 import kotlinx.android.synthetic.main.toast.*
 import pt.isel.pdm.li52d.a1718i.soccerapp.R
-import pt.isel.pdm.li52d.a1718i.soccerapp.utils.MyApplication
 
 
 class NotificationActivity : Activity() {
@@ -44,6 +43,9 @@ class NotificationActivity : Activity() {
                     .setContentText(notificationText.text)
 
             notificationService.notify(notificationId++, builder.build())
+
+
+
         }
     }
 
