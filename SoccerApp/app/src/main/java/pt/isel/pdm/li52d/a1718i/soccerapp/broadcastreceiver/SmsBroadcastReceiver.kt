@@ -12,7 +12,7 @@ import pt.isel.pdm.li52d.a1718i.soccerapp.view.MainActivity
  * Created by lfalcao on 08/11/2017.
  */
 class SmsBroadcastReceiver : BroadcastReceiver() {
-    val TAG: String = ServiceLaucherBroadcastReceiver::class.simpleName!!;
+    val TAG: String = ServiceLauncherBroadcastReceiver::class.simpleName!!;
     override fun onReceive(context: Context?, intent: Intent?) {
         Log.i(TAG, "SMSBroadcast receiver onReceive called with intent $intent")
 

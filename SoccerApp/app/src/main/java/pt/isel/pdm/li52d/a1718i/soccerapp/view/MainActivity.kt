@@ -2,16 +2,23 @@ package pt.isel.pdm.li52d.a1718i.soccerapp.view
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.app.job.JobInfo
+import android.app.job.JobScheduler
+import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.content.Intent.EXTRA_TEXT
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.view.Menu
 import kotlinx.android.synthetic.main.activity_main.*
 import pt.isel.pdm.li52d.a1718i.soccerapp.R
 import pt.isel.pdm.li52d.a1718i.soccerapp.service.ResultsService
 import pt.isel.pdm.li52d.a1718i.soccerapp.utils.MyApplication
 import java.util.*
+import android.view.MenuItem
+import pt.isel.pdm.li52d.a1718i.soccerapp.service.ResultsJobService
 
 
 class MainActivity : Activity() {
@@ -50,8 +57,14 @@ class MainActivity : Activity() {
 
 
         // Get optional search string from intent
-        val search: String =  intent.getStringExtra("search") ?:  "";
+        val search: String = intent.getStringExtra("search") ?: "";
         leagueEdit.setText(search)
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i(TAG, "onStart")
     }
 
     private fun showAlertDialog(messageId: Int) {
@@ -61,5 +74,20 @@ class MainActivity : Activity() {
                 })
                 .show()
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        Log.i(TAG, "onOptionsItemSelected")
+        when(item?.itemId) {
+           R.id.menu_notification  -> this.startActivity(Intent(this, NotificationActivity::class.java))
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

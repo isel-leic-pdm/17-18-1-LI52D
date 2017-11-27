@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:text="Search League"
+        android:text="@string/search_label"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="text"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView"
         app:layout_constraintLeft_toRightOf="@+id/textView" />
 
@@ -33,7 +33,7 @@
         android:layout_height="53dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="31dp"
-        android:text="Search"
+        android:text="@string/search"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leagueEdit"
         android:layout_marginLeft="8dp"

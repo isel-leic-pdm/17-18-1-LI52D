@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_notification"
+        android:showAsAction="withText|collapseActionView"
+        android:title="Notifications" />
+
+
+    <item
+        android:id="@+id/submenu"
+        android:showAsAction="never"
+        android:title="Submenu">
+
+        <menu>
+            <item
+                android:id="@+id/suboption1"
+                android:showAsAction="withText|collapseActionView"
+                android:title="Suboption1" />
+            <item
+                android:id="@+id/suboption2"
+                android:showAsAction="withText|collapseActionView"
+                android:title="Suboption2" />
+        </menu>
+    </item>
+
+
+</menu>

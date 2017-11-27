@@ -3,21 +3,22 @@
     package="pt.isel.pdm.li52d.a1718i.soccerapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission
-        android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/country_flag"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/country_flag"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -26,20 +27,30 @@
             android:label="@string/title_soccer_list_activity" />
         <activity
             android:name=".view.LeagueDetailsActivity"
-            android:label="@string/title_activity_soccer_league"></activity>
+            android:label="@string/title_activity_soccer_league" />
+        <activity
+            android:name=".view.NotificationActivity"
+            android:label="@string/title_activity_toast" />
 
-        <service android:name=".service.ResultsService"/>
-        <receiver android:name=".broadcastreceiver.ServiceLaucherBroadcastReceiver">
+        <service android:name=".service.ResultsService" />
+        <service
+            android:name=".service.ResultsReporterService"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="pt.isel.pdm.li52d.a1718i.soccerapp.service.ISoccerAlertsService" />
+            </intent-filter>
+        </service>
+
+         <receiver android:name=".broadcastreceiver.ServiceLauncherBroadcastReceiver">
+         <intent-filter>
+         <action android:name="android.intent.action.BOOT_COMPLETED" />
+         </intent-filter>
+         </receiver>
+’        <receiver android:name=".broadcastreceiver.SmsBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".broadcastreceiver.SmsBroadcastReceiver">
-            <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
-            </intent-filter>
-        </receiver>
-
     </application>
 
 </manifest>

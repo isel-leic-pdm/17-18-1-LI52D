@@ -2,9 +2,7 @@ package pt.isel.pdm.li52d.a1718i.soccerapp.service
 
 import android.app.Service
 import android.content.Intent
-import android.os.Bundle
 import android.os.IBinder
-import android.os.Message
 import android.util.Log
 import pt.isel.pdm.li52d.a1718i.soccerapp.utils.MyApplication
 
@@ -21,7 +19,7 @@ class ResultsService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        Log.i(TAG, "ResultsService onCreate with pid ${android.os.Process.myPid()} and in thread ${Thread.currentThread().id} ")
+        Log.i(TAG, "ResultsService onCreate1 with pid ${android.os.Process.myPid()} and in thread ${Thread.currentThread().id} ")
 
 
         var t:Thread = Thread {
@@ -37,9 +35,13 @@ class ResultsService : Service() {
         t.start();
     }
 
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        Log.i(TAG, "onStartCommand thread with pid ${android.os.Process.myPid()}, in thread ${Thread.currentThread().id} with intent $intent")
+        return super.onStartCommand(intent, flags, startId)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         Log.i(TAG, "ResultsService service onDestroy")
     }
-
 }

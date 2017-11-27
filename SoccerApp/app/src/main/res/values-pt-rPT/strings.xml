@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search">Procurar</string>
+    <string name="title_soccer_list_activity">Ligas</string>
+    <string name="league_not_supplied">Liga não inserida</string>
+    <string name="leage_not_supported_title">Atenção</string>
+    <string name="title_activity_soccer_league">SoccerLeagueActivity</string>
+    <string name="show_toast">Mostrar Toast</string>
+    <string name="app_name">FutebolApp</string>
+    <string name="title_activity_toast">Toast</string>
+    <string name="search_label">Procurar Liga</string>
+    <string name="show_notifications">Notificação</string>
+    <string name="shared_preferences">Preferências Partilhadas</string>
+</resources>

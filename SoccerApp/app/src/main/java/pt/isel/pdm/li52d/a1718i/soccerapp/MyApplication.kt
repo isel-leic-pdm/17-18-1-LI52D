@@ -1,11 +1,19 @@
 package pt.isel.pdm.li52d.a1718i.soccerapp
 
 import android.app.Application
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.job.JobInfo
+import android.app.job.JobScheduler
+import android.content.ComponentName
+import android.content.Context
+import android.os.Build
 import android.os.Handler
 import android.util.Log
 import pt.isel.pdm.li52d.a1718i.soccerapp.data.ImagesApiRepository
 import pt.isel.pdm.li52d.a1718i.soccerapp.data.SoccerApiRepository
 import pt.isel.pdm.li52d.a1718i.soccerapp.domain.operations.SoccerAppOperations
+import pt.isel.pdm.li52d.a1718i.soccerapp.service.ResultsJobService
 import pt.isel.pdm.li52d.a1718i.soccerapp.utils.HttpRequests
 import pt.isel.pdm.li52d.a1718i.soccerapp.utils.MessageHandler
 
@@ -16,12 +24,13 @@ class MyApplication: Application() {
     val TAG: String = "MyApplication";
     override fun onCreate() {
         super.onCreate()
-        Log.i(TAG, "My Application started1")
+        Log.i(TAG, "My Application start")
 
         HttpRequests.init(applicationContext)
 
         SoccerAppOperations.SoccerRepository = SoccerApiRepository;
         SoccerAppOperations.ImagesRepository = ImagesApiRepository;
+
     }
 
     val Handler: MessageHandler = MessageHandler();
