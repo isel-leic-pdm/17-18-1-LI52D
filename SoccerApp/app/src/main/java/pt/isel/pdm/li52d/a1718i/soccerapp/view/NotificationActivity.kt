@@ -11,6 +11,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_notifications.*
 import kotlinx.android.synthetic.main.toast.*
 import pt.isel.pdm.li52d.a1718i.soccerapp.R
+import pt.isel.pdm.li52d.a1718i.soccerapp.utils.MyApplication
 
 
 class NotificationActivity : Activity() {
@@ -35,18 +36,24 @@ class NotificationActivity : Activity() {
             toast.show()
         }
 
-        showNotification.setOnClickListener {
-            val builder = Notification.Builder(this)
-                    .setTicker("New message arrived")
-                    .setContentTitle("Title of Message")
-                    .setSmallIcon(R.mipmap.country_flag)
-                    .setContentText(notificationText.text)
-
-            notificationService.notify(notificationId++, builder.build())
-
-
-
+        showNotificationChannel1.setOnClickListener {
+            showNotification(MyApplication.Notifications.CHANNEL_ID1)
         }
+
+        showNotificationChannel2.setOnClickListener {
+            showNotification(MyApplication.Notifications.CHANNEL_ID2)
+        }
+    }
+
+    fun showNotification(chId: String) {
+        val builder = Notification.Builder(this, chId)
+                //val builder = Notification.Builder(this)
+                .setTicker("New message arrived")
+                .setContentTitle("Title of Message")
+                .setSmallIcon(R.mipmap.country_flag)
+                .setContentText(notificationText.text)
+
+        notificationService.notify(notificationId++, builder.build())
     }
 
 }

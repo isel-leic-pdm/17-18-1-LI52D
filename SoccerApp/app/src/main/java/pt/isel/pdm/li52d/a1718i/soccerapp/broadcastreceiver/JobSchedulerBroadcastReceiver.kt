@@ -12,7 +12,16 @@ import android.util.Log
 
 class JobSchedulerBroadcastReceiver : BroadcastReceiver() {
     val TAG: String = JobSchedulerBroadcastReceiver::class.simpleName!!;
+
+
     override fun onReceive(context: Context?, intent: Intent?) {
+        // To generate a BOOT_COMPLETED intent without restarting the device use the following commend
+        //
+        // adb shell
+        // su
+        // am broadcast -a android.intent.action.BOOT_COMPLETED
+
+        // adb shell am broadcast -a android.intent.action.BOOT_COMPLETED
         Log.i(TAG, "Broadcast receiver onReceive called with intent $intent")
     }
 }

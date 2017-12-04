@@ -9,6 +9,7 @@
     <string name="app_name">FutebolApp</string>
     <string name="title_activity_toast">Toast</string>
     <string name="search_label">Procurar Liga</string>
-    <string name="show_notifications">Notificação</string>
+    <string name="show_notifications_ch1">Notificação C1</string>
     <string name="shared_preferences">Preferências Partilhadas</string>
+    <string name="show_notifications_ch2">Notificação C1</string>
 </resources>

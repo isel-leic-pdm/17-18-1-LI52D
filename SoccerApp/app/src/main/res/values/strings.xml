@@ -9,7 +9,8 @@
     <string name="title_activity_toast">ToastActivity</string>
     <string name="show_toast">Show Toast</string>
     <string name="search_label">Search League</string>
-    <string name="show_notifications">Notification</string>
+    <string name="show_notifications_ch1">Notification Ch1</string>
     <string name="shared_preferences">Shared Preferences</string>
     <string name="title_activity_shared_preferences">SharedPreferencesActivity</string>
+    <string name="show_notifications_ch2">Notification Ch2</string>
 </resources>
