@@ -19,17 +19,17 @@ class DbOpenHelper(context: Context?) : SQLiteOpenHelper(context, DbSchema.DB_NA
         db.execSQL(DbSchema.Profs.DDL_CREATE_TABLE)
         db.execSQL(
             "INSERT INTO " + DbSchema.Profs.TBL_NAME + " VALUES (" +
-                1 + ", " + 1245 + ", \"Luís Falcão\", \"lfalcao@cc.isel.ipl.pt\"" +
+                1 + ", " + 1245 + ", \"Luís Falcão-1\", \"lfalcao@cc.isel.ipl.pt\"" +
                 ");"
         )
         db.execSQL(
             "INSERT INTO " + DbSchema.Profs.TBL_NAME + " VALUES (" +
-                2 + ", " + 1754 + ", \"João Trindade\", \"jtrindade@cc.isel.ipl.pt\"" +
+                2 + ", " + 1754 + ", \"João Trindade-2\", \"jtrindade@cc.isel.ipl.pt\"" +
                 ");"
         )
         db.execSQL(
                 "INSERT INTO " + DbSchema.Profs.TBL_NAME + " VALUES  (" +
-                        3 + ", " + 1111 + ", \"Paulo Pereira\", \"palbp@cc.isel.ipl.pt\"" +
+                        3 + ", " + 1111 + ", \"Paulo Pereira-3\", \"palbp@cc.isel.ipl.pt\"" +
                         ");"
         )
     }

@@ -5,7 +5,7 @@ import android.provider.BaseColumns
 object DbSchema {
 
     val DB_NAME = "profs.db"
-    val DB_VERSION = 1
+    val DB_VERSION = 2
 
     val COL_ID = BaseColumns._ID
 

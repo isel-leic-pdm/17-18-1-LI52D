@@ -4,8 +4,11 @@ import android.app.ListActivity
 import android.app.LoaderManager
 import android.content.CursorLoader
 import android.content.Loader
+import android.database.ContentObserver
 import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.widget.SimpleCursorAdapter
 import pt.isel.pdm.profslist.provider.ProfsContract
@@ -54,10 +57,26 @@ class MainActivity : ListActivity(), LoaderManager.LoaderCallbacks<Cursor> {
         }
 
     override fun onLoadFinished(loader: Loader<Cursor>?, data: Cursor?) {
+        //data?.registerContentObserver(MyContentObserver())
+        contentResolver.registerContentObserver(ProfsContract.Profs.CONTENT_URI, true,  MyContentObserver())
         adapter.changeCursor(data)
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>?) {
         adapter.changeCursor(null)
+    }
+}
+
+class MyContentObserver : ContentObserver(Handler()) {
+    val TAG: String = MyContentObserver::class.java.simpleName;
+    override fun onChange(selfChange: Boolean) {
+        super.onChange(selfChange)
+        Log.i(TAG, "onChange1 called ${selfChange}")
+    }
+
+    override fun onChange(selfChange: Boolean, uri: Uri?) {
+        super.onChange(selfChange, uri)
+        Log.i(TAG, "onChange2 called ${selfChange} - ${uri}")
+
     }
 }

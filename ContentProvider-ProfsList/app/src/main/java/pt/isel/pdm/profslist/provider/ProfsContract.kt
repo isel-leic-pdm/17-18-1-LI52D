@@ -35,10 +35,18 @@ object ProfsContract {
 
         val DEFAULT_SORT_ORDER = NAME + " ASC"
 
+        val OBJ_URI: Uri
+         get() = CONTENT_URI
+
+
+
     }
 
     fun customSortOrder(columnName: Array<String>, ascending: Boolean): String =
         columnName.joinToString { s -> s } + if(ascending) " ASC" else " DESC"
+
+
+    operator fun Uri.get(id: Int): Uri = Uri.withAppendedPath(this, id.toString())
 
 
 }
